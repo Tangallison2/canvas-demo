@@ -19,6 +19,18 @@
       
         let ctx = canvas.getContext("2d");
         let painting = false
+var isTouchDevice = 'ontouchstart' in document.documentElement;
+if(isTouchDevice){
+    canvas.ontouchmove = (e) =>{
+let x = e.touches[0].clientX
+let y = e.touches[0].clientY
+ctx.beginPath();
+        ctx.arc(x,y,10,0,Math.PI*2);
+        ctx.stroke();
+        ctx.fill();
+    } 
+}
+        else{
         canvas.onmousedown = () =>{
             painting =true
         }
@@ -36,11 +48,9 @@
         ctx.stroke();
         ctx.fill();
          
-           }else{
-               console.log('什么都不做')
            }
 
-            
+        }   
         }
      
      
