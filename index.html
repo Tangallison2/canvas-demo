@@ -20,14 +20,23 @@
         let ctx = canvas.getContext("2d");
         let painting = false
         let last
+        ctx.fillStyle = "black";
+        ctx.strokeStyle ='none'
+        
+ctx.lineWidth = 10
+ctx.lineCap = "round";
+// drawLine(0,0,300,300)
+// drawLine(300,300,400,200)
+
 var isTouchDevice = 'ontouchstart' in document.documentElement;
 function drawLine(x1,y1,x2,y2){
     ctx.beginPath();
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.stroke();
+
 }
-// drawLine(0,0,500,500)
+
  
 
 if(isTouchDevice){
@@ -49,19 +58,14 @@ ctx.beginPath();
         canvas.onmouseup =() =>{
             painting =false
         }
-        ctx.fillStyle = "black";
-        ctx.strokeStyle ='none'
-
+  
 
         canvas.onmousemove = (e) =>{
            if(painting === true){
 console.log(last)
             drawLine(last[0],last[1],e.clientX,e.clientY)
             last = [e.clientX,e.clientY]
-        //     ctx.beginPath();
-        // ctx.arc(e.clientX,e.clientY,10,0,Math.PI*2);
-        // ctx.stroke();
-        // ctx.fill();
+ 
          
            }
 
